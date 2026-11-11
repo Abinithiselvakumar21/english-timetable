@@ -1,21 +1,11 @@
 {
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.7.1"
-    },
-    "*.php": {
-      "runtime": "vercel-php@0.7.1"
-    },
-    "admin/*.php": {
-      "runtime": "vercel-php@0.7.1"
-    },
-    "hod/*.php": {
-      "runtime": "vercel-php@0.7.1"
-    },
-    "staff/*.php": {
-      "runtime": "vercel-php@0.7.1"
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/assets/(.*)",
@@ -23,7 +13,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/server.js"
     }
   ]
 }

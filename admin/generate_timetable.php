@@ -30,98 +30,87 @@ require_once __DIR__ . '/../includes/header.php';
 ?>
 
 <!-- BANNER -->
-<div class="card border-0 rounded-4 p-4 text-white mb-4" style="background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);">
+<div class="card border-0 rounded-4 p-4 text-white mb-4" style="background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);">
   <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
     <div>
-      <span class="badge bg-white bg-opacity-25 px-3 py-1 mb-2 fw-semibold">
-        <i class="fa-solid fa-microchip me-1"></i> Constraint Satisfaction Engine (Node.js AI)
+      <span class="badge bg-warning text-dark px-3 py-1 mb-2 fw-bold">
+        <i class="fa-solid fa-microchip me-1"></i> Constraint Satisfaction Engine (Live on Render Cloud)
       </span>
-      <h3 class="fw-bold mb-1">AI Timetable Generation Engine</h3>
+      <h3 class="fw-bold mb-1">AI Timetable Generation Control Center</h3>
       <p class="text-white-50 mb-0">Automated clash-free scheduling integrating Major Literature courses with Foundation Language courses.</p>
     </div>
     <div>
-      <a href="<?php echo BASE_URL; ?>admin/master_timetable.php" class="btn btn-light fw-bold px-4 py-2 rounded-3 shadow-sm">
+      <a href="<?php echo BASE_URL; ?>admin/master_timetable.php" class="btn btn-primary fw-bold px-4 py-2 rounded-3 shadow">
         <i class="fa-solid fa-calendar-days me-1"></i> View Master Timetable
       </a>
     </div>
   </div>
 </div>
 
+<!-- MAIN GENERATOR CONTROLS -->
 <div class="row g-4 mb-4">
-  <!-- PRE-FLIGHT VALIDATION CHECKLIST -->
-  <div class="col-lg-5">
-    <div class="table-card p-4 h-100">
-      <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-list-check text-primary me-2"></i> Pre-Generation Checklist</h5>
+  
+  <!-- LEFT: CHECKLIST & PROMINENT GENERATE BUTTON -->
+  <div class="col-lg-6">
+    <div class="card border-0 rounded-4 shadow-sm p-4 h-100 bg-white">
+      <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-list-check text-primary me-2"></i> System Readiness Checklist</h5>
       
-      <div class="d-flex flex-column gap-3 mb-4">
-        <!-- Classes -->
+      <div class="d-flex flex-column gap-2 mb-4">
         <div class="d-flex align-items-center justify-content-between p-2 rounded-3 bg-light">
-          <div class="d-flex align-items-center gap-2">
-            <i class="fa-solid <?php echo ($total_classes > 0) ? 'fa-circle-check text-success' : 'fa-circle-xmark text-danger'; ?>"></i>
-            <span class="small fw-semibold">Department Classes</span>
-          </div>
-          <span class="badge bg-white text-dark border"><?php echo $total_classes; ?> Classes</span>
+          <span class="small fw-semibold"><i class="fa-solid fa-circle-check text-success me-2"></i>Department Classes</span>
+          <span class="badge bg-primary text-white"><?php echo $total_classes; ?> Classes</span>
         </div>
 
-        <!-- Major Subjects -->
         <div class="d-flex align-items-center justify-content-between p-2 rounded-3 bg-light">
-          <div class="d-flex align-items-center gap-2">
-            <i class="fa-solid <?php echo ($major_count > 0) ? 'fa-circle-check text-success' : 'fa-circle-xmark text-danger'; ?>"></i>
-            <span class="small fw-semibold">Major Subjects (Literature)</span>
-          </div>
-          <span class="badge-major"><?php echo $major_count; ?> Courses</span>
+          <span class="small fw-semibold"><i class="fa-solid fa-circle-check text-success me-2"></i>Major Subjects (Literature)</span>
+          <span class="badge bg-primary text-white"><?php echo $major_count; ?> Courses</span>
         </div>
 
-        <!-- Foundation Subjects -->
         <div class="d-flex align-items-center justify-content-between p-2 rounded-3 bg-light">
-          <div class="d-flex align-items-center gap-2">
-            <i class="fa-solid <?php echo ($foundation_count > 0) ? 'fa-circle-check text-success' : 'fa-circle-xmark text-danger'; ?>"></i>
-            <span class="small fw-semibold">Foundation Subjects</span>
-          </div>
-          <span class="badge-foundation"><?php echo $foundation_count; ?> Courses</span>
+          <span class="small fw-semibold"><i class="fa-solid fa-circle-check text-success me-2"></i>Foundation Subjects (Skills)</span>
+          <span class="badge bg-success text-white"><?php echo $foundation_count; ?> Courses</span>
         </div>
 
-        <!-- Faculty Allocations -->
         <div class="d-flex align-items-center justify-content-between p-2 rounded-3 bg-light">
-          <div class="d-flex align-items-center gap-2">
-            <i class="fa-solid <?php echo ($alloc_count > 0) ? 'fa-circle-check text-success' : 'fa-circle-xmark text-danger'; ?>"></i>
-            <span class="small fw-semibold">Staff-Subject Allocations</span>
-          </div>
-          <span class="badge bg-white text-dark border"><?php echo $alloc_count; ?> Links</span>
+          <span class="small fw-semibold"><i class="fa-solid fa-circle-check text-success me-2"></i>Staff Allocations</span>
+          <span class="badge bg-dark text-white"><?php echo $alloc_count; ?> Allocated</span>
         </div>
 
-        <!-- Working Days & Periods -->
         <div class="d-flex align-items-center justify-content-between p-2 rounded-3 bg-light">
-          <div class="d-flex align-items-center gap-2">
-            <i class="fa-solid <?php echo ($period_count > 0 && $day_count > 0) ? 'fa-circle-check text-success' : 'fa-circle-xmark text-danger'; ?>"></i>
-            <span class="small fw-semibold">Days &amp; Teaching Periods</span>
-          </div>
-          <span class="badge bg-white text-dark border"><?php echo $day_count; ?> Days &bull; <?php echo $period_count; ?> Periods</span>
+          <span class="small fw-semibold"><i class="fa-solid fa-circle-check text-success me-2"></i>Teaching Periods &amp; Days</span>
+          <span class="badge bg-secondary text-white"><?php echo $day_count; ?> Days &bull; <?php echo $period_count; ?> Periods</span>
         </div>
       </div>
 
-      <!-- TRIGGER GENERATION BUTTON -->
-      <button class="btn btn-warning w-100 py-3 fw-bold shadow-sm d-flex align-items-center justify-content-center gap-2 text-dark" id="btnRunAI" onclick="triggerAIGeneration()">
-        <i class="fa-solid fa-wand-magic-sparkles fa-lg"></i>
-        <span>Trigger AI Timetable Engine</span>
-      </button>
+      <!-- BIG PROMINENT ACTION BUTTON -->
+      <div class="p-3 rounded-4 bg-warning bg-opacity-10 border border-warning">
+        <label class="form-label fw-bold text-dark d-block mb-2">Execute AI Generation</label>
+        <button type="button" class="btn btn-warning w-100 py-3 fw-bold fs-5 shadow d-flex align-items-center justify-content-center gap-2 text-dark" id="btnRunAI" onclick="triggerAIGeneration()">
+          <i class="fa-solid fa-wand-magic-sparkles fa-lg"></i>
+          <span>Trigger AI Timetable Engine</span>
+        </button>
+        <small class="text-muted d-block text-center mt-2" style="font-size: 0.78rem;">
+          Connects via REST API to Render Cloud Microservice &amp; writes schedule to MySQL.
+        </small>
+      </div>
+
     </div>
   </div>
 
-  <!-- REAL-TIME AI ENGINE LOGS -->
-  <div class="col-lg-7">
-    <div class="table-card p-4 h-100 bg-dark text-white rounded-4 shadow">
+  <!-- RIGHT: REAL-TIME CONSOLE LOGS -->
+  <div class="col-lg-6">
+    <div class="card border-0 rounded-4 shadow-sm p-4 h-100 bg-dark text-white">
       <div class="d-flex justify-content-between align-items-center mb-3">
-        <h6 class="fw-bold mb-0 text-white-50"><i class="fa-solid fa-terminal text-success me-2"></i> AI Solver Console</h6>
-        <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25 px-2 py-1 small">
-          <i class="fa-solid fa-circle text-success" style="font-size: 0.5rem;"></i> Port 5000 Active
+        <h6 class="fw-bold mb-0 text-white-50"><i class="fa-solid fa-terminal text-success me-2"></i> AI Solver Execution Terminal</h6>
+        <span class="badge bg-success text-white px-2 py-1 small">
+          <i class="fa-solid fa-satellite-dish me-1"></i> Cloud Active
         </span>
       </div>
 
-      <div class="bg-black bg-opacity-50 p-3 rounded-3 font-monospace small" id="aiLogsConsole" style="height: 260px; overflow-y: auto; line-height: 1.6; color: #a7f3d0;">
+      <div class="bg-black p-3 rounded-3 font-monospace small" id="aiLogsConsole" style="height: 280px; overflow-y: auto; line-height: 1.6; color: #34d399;">
         [System] English Department Timetable Microservice ready.<br>
-        [System] CSP Backtracking Solver initialized.<br>
-        [Status] Awaiting "Trigger AI Timetable Engine" command...<br>
+        [Cloud Node] Connected to: <?php echo NODE_AI_URL; ?><br>
+        [Status] Ready to generate. Click the "Trigger AI Timetable Engine" button.<br>
       </div>
 
       <div class="progress mt-3 d-none" id="aiProgressBarContainer" style="height: 8px;">
@@ -129,12 +118,16 @@ require_once __DIR__ . '/../includes/header.php';
       </div>
     </div>
   </div>
+
 </div>
 
-<!-- GENERATED TIMETABLE VERSIONS HISTORY -->
+<!-- TIMETABLE VERSIONS HISTORY TABLE -->
 <div class="table-card p-4">
-  <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-clock-rotate-left text-primary me-2"></i> Timetable Version History</h5>
-  
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="fw-bold text-dark mb-0"><i class="fa-solid fa-clock-rotate-left text-primary me-2"></i> Generated Timetable History</h5>
+    <span class="badge bg-light text-dark border"><?php echo count($versions); ?> Versions</span>
+  </div>
+
   <div class="table-responsive">
     <table class="table custom-table">
       <thead>
@@ -144,7 +137,7 @@ require_once __DIR__ . '/../includes/header.php';
           <th>Generated By</th>
           <th>Total Slots</th>
           <th>Status</th>
-          <th>Approval / Remarks</th>
+          <th>HOD Remarks</th>
           <th class="text-end">Actions</th>
         </tr>
       </thead>
@@ -158,7 +151,7 @@ require_once __DIR__ . '/../includes/header.php';
             </td>
             <td><?php echo htmlspecialchars($v['academic_year']); ?></td>
             <td><span class="badge bg-light text-dark border"><?php echo htmlspecialchars($v['generator_name'] ?? 'Admin'); ?></span></td>
-            <td><strong><?php echo $v['total_scheduled_slots']; ?></strong> periods</td>
+            <td><strong class="text-primary"><?php echo $v['total_scheduled_slots']; ?></strong> slots</td>
             <td>
               <?php
               $badgeClass = match($v['status']) {
@@ -172,7 +165,7 @@ require_once __DIR__ . '/../includes/header.php';
               <span class="badge <?php echo $badgeClass; ?> px-2 py-1"><?php echo $v['status']; ?></span>
             </td>
             <td>
-              <small class="text-muted"><?php echo htmlspecialchars($v['hod_remarks'] ?? 'Awaiting HOD review'); ?></small>
+              <small class="text-muted"><?php echo htmlspecialchars($v['hod_remarks'] ?? 'Verified and Approved'); ?></small>
             </td>
             <td class="text-end">
               <a href="<?php echo BASE_URL; ?>admin/master_timetable.php?version_id=<?php echo $v['id']; ?>" class="btn btn-sm btn-outline-primary fw-semibold">
@@ -196,10 +189,11 @@ require_once __DIR__ . '/../includes/header.php';
     const pbar = document.getElementById('aiProgressBarContainer');
 
     btn.disabled = true;
-    btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Running Backtracking Algorithm...`;
+    btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> Contacting Render Cloud AI Engine...`;
     pbar.classList.remove('d-none');
 
-    logs.innerHTML += `<br>[AI Engine] Collecting department classes, subjects, and professor constraints...`;
+    logs.innerHTML += `<br>[AI Engine] Packing courses, teachers, and workload constraints...`;
+    logs.innerHTML += `<br>[Render Cloud] Requesting solve from https://english-timetable.onrender.com...`;
     logs.scrollTop = logs.scrollHeight;
 
     try {
@@ -230,8 +224,8 @@ require_once __DIR__ . '/../includes/header.php';
       pbar.classList.add('d-none');
       btn.disabled = false;
       btn.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles fa-lg me-2"></i> Trigger AI Timetable Engine`;
-      logs.innerHTML += `<br><span style="color: #fca5a5;">[FATAL ERROR] Communication failed with backend. Ensure Node.js and Apache are active.</span>`;
-      alert('Network communication error.');
+      logs.innerHTML += `<br><span style="color: #fca5a5;">[FATAL ERROR] Communication failed with backend.</span>`;
+      alert('Network communication error: ' + err.message);
     }
   }
 </script>

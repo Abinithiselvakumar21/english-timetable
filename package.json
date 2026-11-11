@@ -1,0 +1,13 @@
+{
+  "name": "english-timetable-management-system",
+  "version": "1.0.0",
+  "description": "AI Staff Timetable Management System for College English Department",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
