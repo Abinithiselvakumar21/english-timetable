@@ -1,0 +1,458 @@
+/* ========================================================
+   College English Department AI Timetable System
+   Modern Premium Styling - Glassmorphism & Dashboard UI
+   ======================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --primary: #4361ee;
+  --primary-hover: #3a56d4;
+  --primary-light: #eef2ff;
+  --secondary: #4895ef;
+  --success: #10b981;
+  --success-light: #ecfdf5;
+  --warning: #f59e0b;
+  --warning-light: #fffbeb;
+  --danger: #ef4444;
+  --danger-light: #fef2f2;
+  --dark: #0f172a;
+  --gray: #64748b;
+  --light-bg: #f8fafc;
+  --card-border: rgba(226, 232, 240, 0.8);
+  --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  --sidebar-width: 270px;
+  
+  /* Subject Category Special Highlights */
+  --major-color: #2563eb;
+  --major-bg: #eff6ff;
+  --major-border: #bfdbfe;
+  --foundation-color: #059669;
+  --foundation-bg: #ecfdf5;
+  --foundation-border: #a7f3d0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--light-bg);
+  color: #334155;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========================================================
+   1. LOGIN PAGE SPECIFIC STYLES
+   ======================================================== */
+.login-body {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e3a8a 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px;
+}
+
+.login-body::before {
+  content: '';
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: rgba(99, 102, 241, 0.25);
+  filter: blur(100px);
+  border-radius: 50%;
+  top: 10%;
+  left: 15%;
+}
+
+.login-body::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(16, 185, 129, 0.2);
+  filter: blur(100px);
+  border-radius: 50%;
+  bottom: 10%;
+  right: 15%;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  max-width: 950px;
+  width: 100%;
+  z-index: 10;
+}
+
+.login-brand-side {
+  background: linear-gradient(145deg, #4361ee 0%, #3a0ca3 100%);
+  color: #ffffff;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-form-side {
+  padding: 50px 40px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
+}
+
+/* ========================================================
+   2. DASHBOARD & SIDEBAR LAYOUT
+   ======================================================== */
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+.sidebar-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-logo {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--primary), #3a0ca3);
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  box-shadow: 0 8px 16px rgba(67, 97, 238, 0.25);
+}
+
+.sidebar-menu {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.menu-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.8px;
+  margin: 16px 0 8px 12px;
+}
+
+.nav-link-custom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  color: #475569;
+  font-weight: 500;
+  font-size: 0.92rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+}
+
+.nav-link-custom i {
+  font-size: 1.15rem;
+  width: 24px;
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.nav-link-custom:hover {
+  background: #f1f5f9;
+  color: var(--primary);
+}
+
+.nav-link-custom:hover i {
+  color: var(--primary);
+}
+
+.nav-link-custom.active {
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(67, 97, 238, 0.25);
+}
+
+.nav-link-custom.active i {
+  color: #ffffff;
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid #f1f5f9;
+  background: #fafafa;
+}
+
+.user-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* ========================================================
+   3. MAIN CONTENT AREA & TOPBAR
+   ======================================================== */
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  backdrop-filter: blur(8px);
+}
+
+.content-body {
+  padding: 30px;
+  flex: 1;
+}
+
+/* ========================================================
+   4. METRIC CARDS & WIDGETS
+   ======================================================== */
+.stat-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid var(--card-border);
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -8px rgba(0, 0, 0, 0.08);
+}
+
+.stat-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.stat-icon.primary { background: var(--primary-light); color: var(--primary); }
+.stat-icon.success { background: var(--success-light); color: var(--success); }
+.stat-icon.warning { background: var(--warning-light); color: var(--warning); }
+.stat-icon.danger  { background: var(--danger-light); color: var(--danger); }
+
+.stat-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.88rem;
+  color: var(--gray);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ========================================================
+   5. SPECIAL CATEGORY HIGHLIGHT CARDS
+   ======================================================== */
+.badge-major {
+  background-color: var(--major-bg);
+  color: var(--major-color);
+  border: 1px solid var(--major-border);
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.badge-foundation {
+  background-color: var(--foundation-bg);
+  color: var(--foundation-color);
+  border: 1px solid var(--foundation-border);
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Slot Styling inside Timetable Table */
+.timetable-slot {
+  min-height: 95px;
+  padding: 10px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.timetable-slot.major-slot {
+  background: #f0f7ff;
+  border-left: 4px solid var(--major-color);
+  color: #1e3a8a;
+}
+
+.timetable-slot.foundation-slot {
+  background: #f0fdf4;
+  border-left: 4px solid var(--foundation-color);
+  color: #064e3b;
+}
+
+.timetable-slot.free-slot {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ========================================================
+   6. TABLES & BUTTONS
+   ======================================================== */
+.table-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.custom-table {
+  width: 100%;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.custom-table thead th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.custom-table tbody td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.92rem;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.btn-primary-custom {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 22px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.25);
+  transition: all 0.2s ease;
+}
+
+.btn-primary-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(67, 97, 238, 0.35);
+  color: white;
+}
+
+/* Responsive tweaks */
+@media (max-width: 992px) {
+  .sidebar {
+    left: -270px;
+  }
+  .sidebar.show {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}

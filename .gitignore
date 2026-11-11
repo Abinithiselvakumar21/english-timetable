@@ -1,0 +1,5 @@
+# Ignore local dependency folders & sensitive configs
+node_modules/
+ai_service/node_modules/
+.vscode/
+*.log

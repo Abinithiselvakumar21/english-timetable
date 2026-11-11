@@ -1,0 +1,15 @@
+{
+  "name": "english-timetable-ai-service",
+  "version": "1.0.0",
+  "description": "AI-Based Constraint Satisfaction Timetable Generator and Real-time Notification Engine for English Department",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node-cron": "^3.0.3",
+    "socket.io": "^4.7.4"
+  }
+}
