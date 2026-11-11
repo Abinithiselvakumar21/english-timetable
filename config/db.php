@@ -4,20 +4,20 @@
 // File: config/db.php
 // ========================================================
 
-// Read environment variables if available (for Render / Vercel), fallback to localhost XAMPP
+// Read environment variables if available, fallback to localhost XAMPP
 define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
 define('DB_USER', getenv('DB_USER') ?: 'root');
 define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : '');
 define('DB_NAME', getenv('DB_NAME') ?: 'english_timetable_db');
 define('DB_PORT', getenv('DB_PORT') ?: '3306');
 
-// Dynamically determine host and port (works for localhost, localhost:8080, and vercel/render)
+// Dynamically determine host and port
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
 define('BASE_URL', $protocol . $host . '/english_timetable/');
 
-// Node AI Endpoint (Environment variable in Cloud, or localhost:5000)
-define('NODE_AI_URL', getenv('NODE_AI_URL') ?: 'http://localhost:5000/api/');
+// LIVE AI Microservice Running on Render Cloud
+define('NODE_AI_URL', getenv('NODE_AI_URL') ?: 'https://english-timetable.onrender.com/api/');
 
 try {
     $pdo = new PDO(
@@ -31,7 +31,6 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    // If running in development without online DB, print clean warning
     die("Database Connection Error: " . $e->getMessage());
 }
 
