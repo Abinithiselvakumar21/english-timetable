@@ -358,9 +358,11 @@ function renderGeneratorPage() {
 </html>`;
 }
 
-// Start Server
-app.listen(PORT, () => {
-    console.log(`🚀 Live Cloud Web Engine Running on Port ${PORT}`);
-});
+// Start Server locally if not running on Vercel Serverless
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`🚀 Live Cloud Web Engine Running on Port ${PORT}`);
+    });
+}
 
 module.exports = app;
